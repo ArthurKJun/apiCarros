@@ -1,12 +1,14 @@
 package com.example.apiCarros.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,5 +34,21 @@ public class CarroController{
 	@GetMapping() 
 	public ResponseEntity<List<Carro>> getContatos() {
 		return ResponseEntity.status(HttpStatus.OK).body(repo.findAll());
+	}
+	
+	@GetMapping("/{idCarro}") 
+	public ResponseEntity<Carro> getContatosId(@PathVariable("idCarro") long id) {
+
+		Optional<Carro> opCarro = repo.findById(id);		
+		
+		try {
+			
+			Carro ct = opCarro.get();			
+			return ResponseEntity.status(HttpStatus.OK).body(ct);
+			
+		}catch(Exception e) {
+			
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+			}
 	}
 }
