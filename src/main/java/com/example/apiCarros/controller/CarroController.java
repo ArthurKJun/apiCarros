@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,4 +52,34 @@ public class CarroController{
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 			}
 	}
+	
+	@PutMapping("/{idCarro}") 
+	public ResponseEntity<Carro> alterarContatos(@PathVariable("idCarro") Long idCarro, @RequestBody Carro Carro) {
+		
+		Optional<Carro> opCarro = repo.findById(idCarro);		
+		
+		try {
+			
+			Carro ct = opCarro.get();
+			
+			ct.setDono(Carro.getDono());
+			ct.setMarca(Carro.getMarca());
+			ct.setModelo(Carro.getModelo());
+			ct.setAnoFab(Carro.getAnoFab());
+			ct.setAnoMod(Carro.getAnoMod());
+			ct.setChassi(Carro.getChassi());
+			ct.setPlaca(Carro.getPlaca());
+			ct.setRenavam(Carro.getRenavam());
+			
+			repo.save(ct);
+			
+			return ResponseEntity.status(HttpStatus.OK).body(ct);
+			
+		}
+		catch(Exception e) {
+		
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+		}
+	
 }
