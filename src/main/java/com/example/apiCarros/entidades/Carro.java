@@ -14,20 +14,18 @@ public class Carro{
 	private String dono;	
 	private String marca;
 	private String modelo;
-	private int anoFab;
-	private int anoMod;
+	private String ano;	
 	private String placa;
 	private String chassi;
 	private String renavam;
 	
-	public Carro(long id, String dono, String marca, String modelo, int anoFab, int anoMod, String placa, String chassi, String renavam){
+	public Carro(long id, String dono, String marca, String modelo, String ano, String placa, String chassi, String renavam){
 		
 		this.id = id;
 		this.dono = dono;
 		this.marca = marca;
 		this.modelo = modelo;
-		this.anoFab = anoFab;
-		this.anoMod = anoMod;
+		this.ano = ano;		
 		this.placa = placa;
 		this.chassi = chassi;
 		this.renavam = renavam;
@@ -62,18 +60,12 @@ public class Carro{
 	public void setModelo(String modelo) {
 		this.modelo = modelo;
 	}
-	public int getAnoFab() {
-		return anoFab;
+	public String getAno() {
+		return ano;
 	}
-	public void setAnoFab(int anoFab) {
-		this.anoFab = anoFab;
-	}
-	public int getAnoMod() {
-		return anoMod;
-	}
-	public void setAnoMod(int anoMod) {
-		this.anoMod = anoMod;
-	}
+	public void setAno(String ano) {
+		this.ano = ano;
+	}	
 	public String getPlaca() {
 		return placa;
 	}

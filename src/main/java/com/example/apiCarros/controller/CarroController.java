@@ -66,8 +66,7 @@ public class CarroController {
 			ct.setDono(Carro.getDono());
 			ct.setMarca(Carro.getMarca());
 			ct.setModelo(Carro.getModelo());
-			ct.setAnoFab(Carro.getAnoFab());
-			ct.setAnoMod(Carro.getAnoMod());
+			ct.setAno(Carro.getAno());			
 			ct.setChassi(Carro.getChassi());
 			ct.setPlaca(Carro.getPlaca());
 			ct.setRenavam(Carro.getRenavam());
